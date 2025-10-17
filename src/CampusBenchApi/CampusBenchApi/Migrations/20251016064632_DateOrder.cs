@@ -11,27 +11,22 @@ namespace CampusBenchApi.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTime>(
+            migrationBuilder.AddColumn<DateTime>(
                 name: "DateTime",
                 table: "Orders",
                 type: "timestamp with time zone",
                 nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                oldClrType: typeof(DateTime),
-                oldType: "timestamp with time zone",
-                oldNullable: true);
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTime>(
+            migrationBuilder.AddColumn<DateTime>(
                 name: "DateTime",
                 table: "Orders",
                 type: "timestamp with time zone",
-                nullable: true,
-                oldClrType: typeof(DateTime),
-                oldType: "timestamp with time zone");
+                nullable: true);
         }
     }
 }

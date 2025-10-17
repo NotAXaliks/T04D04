@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppDbContext>(opt=>opt.UseNpgsql("host=127.0.0.1;username=postgres;password=12;database=campusbench"));
+builder.Services.AddDbContext<AppDbContext>(opt=>opt.UseNpgsql("host=127.0.0.1:40001;username=xaliks;password=coolPaSsw0rd;database=campusbench"));
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {

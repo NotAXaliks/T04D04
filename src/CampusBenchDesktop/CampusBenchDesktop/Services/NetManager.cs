@@ -7,7 +7,7 @@ namespace CampusBenchDesktop.Services;
 
 public static class NetManager
     {
-        public static string Url = "http://localhost:5107/";
+        public static string Url = "http://localhost:5000/";
         private static HttpClient httpClient = new HttpClient();
 
         public static async Task<T> Get<T>(string path)

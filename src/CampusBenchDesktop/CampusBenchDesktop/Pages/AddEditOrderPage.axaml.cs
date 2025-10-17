@@ -20,14 +20,31 @@ public partial class AddEditOrderPage : UserControl
 
     private async void BSave_OnClick(object? sender, RoutedEventArgs e)
     {
+        if (string.IsNullOrWhiteSpace(_contextOrder.name)) return;
+
         if (_contextOrder.id == 0)
         {
             //Добавление
-            await NetManager.Post("APPPi/Odet", _contextOrder);
+            try
+            {
+                await NetManager.Post("api/Order", _contextOrder);
+            }
+            catch
+            {
+                // Я хз как лучше сделать обработчик ошибок
+            }
         }
         else
         {
             //Изменение
+            try
+            {
+                await NetManager.Put($"api/Order/{_contextOrder.id}", _contextOrder);
+            }
+            catch
+            {
+                // Я хз как лучше сделать обработчик ошибок
+            }
         }
         App.mainWindow.MainFrame.Content = new OrdersPage();
 

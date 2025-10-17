@@ -25,8 +25,15 @@ public partial class OrdersPage : UserControl
 
     private async void Refresh()
     {
-       _orders = await NetManager.Get<List<Order>>("api/Order");
-       DGOrder.ItemsSource = Orders;
+        try
+        {
+            _orders = await NetManager.Get<List<Order>>("api/Order");
+            DGOrder.ItemsSource = Orders;
+        }
+        catch
+        {
+            // Я хз как лучше сделать обработчик ошибок
+        }
     }
 
     private void BAdd_OnClick(object? sender, RoutedEventArgs e)
@@ -46,6 +53,15 @@ public partial class OrdersPage : UserControl
     {
         if (DGOrder.SelectedItem is Order order)
         {
+            try
+            {
+                await NetManager.Delete($"api/Order/{order.id}");
+            }
+            catch
+            {
+                // Я хз как лучше сделать обработчик ошибок
+            }
+
             Refresh();
         }
     }
